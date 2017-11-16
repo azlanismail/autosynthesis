@@ -1,0 +1,64 @@
+$SU.strat-v0.1
+// Stochastic Memory Update Strategy
+start strategy
+States:
+212
+// Initial state
+InitState:
+31
+// initial distribution
+Init:
+{0=1.0}
+// next state function
+// note: only P1 states
+Next:
+// first index: current state
+// second index: current corner
+30 0 {17=1.0}
+31 0 {0=1.0}
+83 0 {0=1.0}
+84 0 {0=1.0}
+85 0 {0=1.0}
+173 0 {0=1.0}
+174 0 {0=1.0}
+175 0 {0=1.0}
+// memory update function: player states
+MemUpdStates:
+// first index: current state
+// second index: current corner
+// third index: next move
+17 0 0 {0=1.0}
+17 0 1 {0=1.0}
+30 0 17 {0=1.0}
+31 0 0 {0=1.0}
+83 0 0 {0=1.0}
+84 0 0 {0=1.0}
+85 0 0 {0=1.0}
+173 0 0 {0=1.0}
+174 0 0 {0=1.0}
+175 0 0 {0=1.0}
+// memory update function: moves
+MemUpdMoves:
+// first index: current state
+// second index: current move
+// third index: curent corner (at move)
+// fourth index: next state
+17 0 0 83 {0=1.0}
+17 0 0 84 {0=1.0}
+17 1 0 83 {0=1.0}
+17 1 0 85 {0=1.0}
+30 17 0 17 {0=1.0}
+31 0 0 30 {0=1.0}
+83 0 0 173 {0=1.0}
+84 0 0 174 {0=1.0}
+85 0 0 175 {0=1.0}
+173 0 0 173 {0=1.0}
+174 0 0 174 {0=1.0}
+175 0 0 175 {0=1.0}
+Info:
+
+maximum C-iterations: 500
+	relative termination threshold: 0.010000
+	bounding box: 
+
+endstrategy

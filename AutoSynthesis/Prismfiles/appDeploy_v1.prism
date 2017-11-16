@@ -1,0 +1,106 @@
+smg
+
+//=========Player definition=======
+player decisionmaker
+moduleDec,[node0],[node1],[end]
+endplayer
+
+player node
+moduleNode,[n0rs0],[n0rs1],[n1rs0],[n1rs1],[n1rs2]
+endplayer
+
+
+//=========User Requirements=======
+const int A0_ID = 0;
+const int A0_DUR = 120; //cost
+const double A0_REL = 0.5; //reliability
+const double A0_COST= 50; //max cost
+
+
+//=========Resource Profiles=======
+const int MXN=3;
+const int MXR=4;
+const int N0_MAX_SV=30;	//finite number of services
+const int N0_MAX_EV=2;	//finite number of computing nodes
+
+
+const int n0rs0_cost = 95;	//cost
+const int n0rs0_time = 110;	//time
+const double n0rs0_rel = 0.97;	//reliability
+
+const int n0rs1_cost = 60;	//cost
+const int n0rs1_time = 70;	//time
+const double n0rs1_rel = 0.97;	//reliability
+
+const int n1rs0_cost = 70;	//cost
+const int n1rs0_time = 60;	//time
+const double n1rs0_rel = 0.97;	//reliability
+
+const int n1rs1_cost = 40;	//cost
+const int n1rs1_time = 110;	//time
+const double n1rs1_rel = 0.97;	//reliability
+
+const int n1rs2_cost = 50;	//cost
+const int n1rs2_time = 90;	//time
+const double n1rs2_rel = 0.97;	//reliability
+
+
+//=========Global Parameters=======
+const int TP=0;	//player 1 state
+const int TE=1;	//plater 2 state
+const int NI=-1;	//initial node
+global t:[TP..TE] init TP;	//to control the turn
+global goal: bool init false;	//(absorbing state)
+global node:[-1..MXN] init NI;  //number of computing node
+global rs0:[-1..MXR] init NI;  //number of virtual machine
+global rs1:[-1..MXR] init NI;  //number of virtual machine
+
+//=========Module for Player 1=======
+module moduleDec
+[node0] (t=TP) & (goal=false) -> (node'=0) & (t'=TE);
+[node1] (t=TP) & (goal=false) -> (node'=1) & (t'=TE);
+[end] (t=TP) & (goal=true) & (node >=0) -> true;
+endmodule
+
+//=========Module for Player 2=======
+module moduleNode
+[n0rs0] (t=TE) & (node=0) -> n0rs0_rel: (t'=TP) & (rs0'=0) & (goal'=true) + 1-n0rs0_rel: (t'=TP) & (goal'=false);
+[n0rs1] (t=TE) & (node=0) -> n0rs1_rel: (t'=TP) & (rs0'=1) & (goal'=true) + 1-n0rs1_rel: (t'=TP) & (goal'=false);
+
+[n1rs0] (t=TE) & (node=1) -> n1rs0_rel: (t'=TP) & (rs1'=0) & (goal'=true) + 1-n1rs0_rel: (t'=TP) & (goal'=false);
+[n1rs1] (t=TE) & (node=1) -> n1rs1_rel: (t'=TP) & (rs1'=1) & (goal'=true) + 1-n1rs1_rel: (t'=TP) & (goal'=false);
+[n1rs2] (t=TE) & (node=1) -> n1rs2_rel: (t'=TP) & (rs1'=2) & (goal'=true) + 1-n1rs2_rel: (t'=TP) & (goal'=false);
+endmodule
+
+
+//========Formula================
+formula qrs0_cost = ( rs0 = 0 ? n0rs0_cost :
+	  	    ( rs0 = 1 ? n0rs0_cost : -1 ));
+
+formula qrs1_cost = ( rs1 = 0 ? n0rs0_cost :
+	  	    ( rs1 = 1 ? n0rs0_cost :
+		    ( rs1 = 2 ? n0rs0_cost : -1 )));
+
+formula qrs_cost = ( qrs0_cost < 0 ? qrs0_cost : qrs1_cost);
+
+
+formula qrs0_time = ( rs0 = 0 ? n0rs0_time :
+	  	    ( rs0 = 1 ? n0rs0_time : -1 ));
+
+formula qrs1_time = ( rs1 = 0 ? n0rs0_time :
+	  	    ( rs1 = 1 ? n0rs0_time :
+		    ( rs1 = 2 ? n0rs0_time : -1 )));
+
+formula qrs_time = ( qrs0_time < 0 ? qrs0_time : qrs1_time);
+
+//=========Reward Structure=======
+rewards "rw_cost"
+[end] true : qrs_cost;
+endrewards
+
+rewards "rw_time"
+[end] true : qrs_time;
+endrewards
+
+//=========Labels=======
+label "done" = (goal=true);

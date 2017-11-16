@@ -1,0 +1,183 @@
+
+Building model...
+
+Computing reachable states... 16 states
+Reachable states exploration and model construction done in 0.099 secs.
+Sorting reachable states list...
+
+Time for model construction: 0.105 seconds.
+
+Reducing multi-objective query to CNF: R{"rw_cost"}<cost [ C ]&R{"rw_time"}<time [ C ]&R{"rw_reliability"}>reliability [ C ]
+expr: [[R{"rw_cost"}<cost [ C ]], [R{"rw_time"}<time [ C ]], [R{"rw_reliability"}>reliability [ C ]]]
+
+Warning: Strict inequalities ignored and turned into nonstrict inequalities:
+	R{"rw_cost"}<cost [ C ]
+	R{"rw_time"}<time [ C ]
+	R{"rw_reliability"}>reliability [ C ]
+
+/////////////////   NEW (DIRECT) MODEL CHECKING TASK     /////////////////////
+Property:
+	[[R{"rw_cost"}<cost [ C ]], [R{"rw_time"}<time [ C ]], [R{"rw_reliability"}>reliability [ C ]]]
+
+initial state: 0
+operation: Strategy generation
+Synthesis took 0.554766 s
+strategy: null
+
+Number of states satisfying <<p1>> ((R{"rw_cost"}<cost [ C ]&R{"rw_time"}<time [ C ]&R{"rw_reliability"}>reliability [ C ])): 0
+
+Property satisfied in 0 of 1 initial states.
+
+Time for model checking: 0.6080000000000001 seconds.
+
+Result: false (property not satisfied in the initial state)
+
+Reducing multi-objective query to CNF: R{"rw_cost"}<cost [ C ]&R{"rw_time"}<time [ C ]&R{"rw_reliability"}>reliability [ C ]
+expr: [[R{"rw_cost"}<cost [ C ]], [R{"rw_time"}<time [ C ]], [R{"rw_reliability"}>reliability [ C ]]]
+
+Warning: Strict inequalities ignored and turned into nonstrict inequalities:
+	R{"rw_cost"}<cost [ C ]
+	R{"rw_time"}<time [ C ]
+	R{"rw_reliability"}>reliability [ C ]
+
+/////////////////   NEW (DIRECT) MODEL CHECKING TASK     /////////////////////
+Property:
+	[[R{"rw_cost"}<cost [ C ]], [R{"rw_time"}<time [ C ]], [R{"rw_reliability"}>reliability [ C ]]]
+
+initial state: 0
+operation: Pareto set computation
+Pareto set computation took 0.414586 s
+Resulting Pareto set:
+maxcorners=9. state 0:
+[r:[0.0000, 0.0000, -1.0000]r:[0.0000, 1.0000, 0.0000]r:[1.0000, 0.0000, 0.0000][127.4808, 1009.1689, 0.9899][127.4824, 1009.1671, 0.9899][97.8832, 1038.2570, 0.9899][127.4801, 1009.1697, 0.9899]]
+
+Pareto set computation result evaluated
+Time for model checking: 0.44 seconds.
+
+Result: Pareto Set
+
+Building model...
+
+Computing reachable states... 16 states
+Reachable states exploration and model construction done in 0.059000000000000004 secs.
+Sorting reachable states list...
+
+Time for model construction: 0.060000000000000005 seconds.
+
+Reducing multi-objective query to CNF: R{"rw_cost"}<cost [ C ]&R{"rw_time"}<time [ C ]&R{"rw_reliability"}>reliability [ C ]
+expr: [[R{"rw_cost"}<cost [ C ]], [R{"rw_time"}<time [ C ]], [R{"rw_reliability"}>reliability [ C ]]]
+
+Warning: Strict inequalities ignored and turned into nonstrict inequalities:
+	R{"rw_cost"}<cost [ C ]
+	R{"rw_time"}<time [ C ]
+	R{"rw_reliability"}>reliability [ C ]
+
+/////////////////   NEW (DIRECT) MODEL CHECKING TASK     /////////////////////
+Property:
+	[[R{"rw_cost"}<cost [ C ]], [R{"rw_time"}<time [ C ]], [R{"rw_reliability"}>reliability [ C ]]]
+
+initial state: 0
+operation: Strategy generation
+Strategy construction took 0.091076 s
+Synthesis took 0.296110 s
+strategy: $SU.strat-v0.1
+// Stochastic Memory Update Strategy
+start strategy
+States:
+16
+// Initial state
+InitState:
+0
+// initial distribution
+Init:
+{1=1.0}
+// next state function
+// note: only P1 states
+Next:
+// first index: current state
+// second index: current corner
+0 1 {2=1.0}
+1 0 {0=1.0}
+1 3 {2=1.0}
+3 0 {0=1.0}
+3 1 {2=1.0}
+6 0 {0=1.0}
+8 0 {0=1.0}
+// memory update function: player states
+MemUpdStates:
+// first index: current state
+// second index: current corner
+// third index: next move
+0 1 2 {1=1.0}
+1 0 0 {0=1.0}
+1 3 2 {3=1.0}
+3 0 0 {0=1.0}
+3 1 2 {1=1.0}
+6 0 0 {0=1.0}
+8 0 0 {0=1.0}
+11 0 0 {3=1.0}
+11 0 1 {0=1.0}
+11 0 2 {0=1.0}
+11 0 3 {0=1.0}
+11 0 4 {0=1.0}
+13 0 0 {0=1.0}
+13 0 1 {0=1.0}
+13 0 2 {0=1.0}
+13 0 3 {0=1.0}
+13 0 4 {0=1.0}
+13 1 0 {0=1.0}
+13 1 1 {0=1.0}
+13 1 2 {0=1.0}
+13 1 3 {0=1.0}
+13 1 4 {1=1.0}
+// memory update function: moves
+MemUpdMoves:
+// first index: current state
+// second index: current move
+// third index: curent corner (at move)
+// fourth index: next state
+0 2 1 13 {0=0.01905326242417657, 1=0.9809467375758234}
+1 0 0 11 {0=1.0}
+1 2 3 13 {1=1.0}
+3 0 0 11 {0=1.0}
+3 2 1 13 {0=0.01905326242417657, 1=0.9809467375758234}
+6 0 0 6 {0=1.0}
+8 0 0 8 {0=1.0}
+11 0 3 1 {3=1.0}
+11 0 3 6 {0=1.0}
+11 1 0 1 {0=1.0}
+11 1 0 6 {0=1.0}
+11 2 0 1 {0=1.0}
+11 2 0 6 {0=1.0}
+11 3 0 1 {0=1.0}
+11 3 0 6 {0=1.0}
+11 4 0 1 {0=1.0}
+11 4 0 6 {0=1.0}
+13 0 0 3 {0=1.0}
+13 0 0 8 {0=1.0}
+13 1 0 3 {0=1.0}
+13 1 0 8 {0=1.0}
+13 2 0 3 {0=1.0}
+13 2 0 8 {0=1.0}
+13 3 0 3 {0=1.0}
+13 3 0 8 {0=1.0}
+13 4 0 3 {0=1.0}
+13 4 0 8 {0=1.0}
+13 4 1 3 {1=1.0}
+13 4 1 8 {0=1.0}
+Info:
+
+maximum C-iterations: 500
+	relative termination threshold: 0.010000
+	bounding box: 
+
+endstrategy
+
+
+Number of states satisfying <<p1>> ((R{"rw_cost"}<cost [ C ]&R{"rw_time"}<time [ C ]&R{"rw_reliability"}>reliability [ C ])): 7
+
+Property satisfied in 1 of 1 initial states.
+
+Time for model checking: 0.319 seconds.
+
+Result: true (property satisfied in the initial state)

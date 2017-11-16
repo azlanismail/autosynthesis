@@ -1,0 +1,10 @@
+const int MAXCS = 62;
+const int MAXRT = 105;
+const double MINRL = 0.5;
+
+<<decisionmaker>> ((R{"cost"}<=MAXCS [ C ]&R{"time"}<=MAXRT [ C ]))
+
+<<decisionmaker>> R{"cost"}max=? [ F "done" ]
+
+<<decisionmaker>> R{"time"}max=? [ F "done" ]
+
