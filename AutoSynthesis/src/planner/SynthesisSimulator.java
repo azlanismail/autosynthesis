@@ -342,11 +342,11 @@ public class SynthesisSimulator {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
-		String propPath = "/home/azlan/git/prismgames/Prismfiles/propTest.props";
-		String modelPath = "/home/azlan/git/prismgames/Prismfiles/appDeployModel.prism";
-		String transPath = "/home/azlan/git/prismgames/IOFiles/trans.txt";
-		String stratPath = "/home/azlan/git/prismgames/IOFiles/strat.txt";
-		String actionListPath = "/home/azlan/git/prismgames/IOFiles/actionList.txt";
+		String propPath = "/home/azlan/git/autosynthesis/AutoSynthesis/Prismfiles/propTest.props";
+		String modelPath = "/home/azlan/git/autosynthesis/AutoSynthesis/Prismfiles/appDeployModel.prism";
+		String transPath = "/home/azlan/git/autosynthesis/AutoSynthesis/IOFiles/trans.txt";
+		String stratPath = "/home/azlan/git/autosynthesis/AutoSynthesis/IOFiles/strat.txt";
+		String actionListPath = "/home/azlan/git/autosynthesis/AutoSynthesis/IOFiles/actionList.txt";
 		//to log the execution information
 		String outfile = "/home/azlan/git/prismgames/IOFiles/logfile";
 				
