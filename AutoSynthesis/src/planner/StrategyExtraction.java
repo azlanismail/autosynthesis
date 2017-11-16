@@ -6,6 +6,8 @@ import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import Unused.ConfigurationPlanner;
+
 public class StrategyExtraction {
 
 	protected String mapsPath = null;

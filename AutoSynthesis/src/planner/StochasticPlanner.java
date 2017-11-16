@@ -5,6 +5,7 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Random;
 
+import Unused.ConfigurationPlanner;
 import explicit.CompositionalSMGModelChecker;
 import explicit.Model;
 import explicit.PPLSupport;
