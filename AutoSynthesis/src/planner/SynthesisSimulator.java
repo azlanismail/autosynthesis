@@ -351,93 +351,92 @@ public class SynthesisSimulator {
 		String outfile = "/home/azlan/git/prismgames/IOFiles/logfile";
 				
 		//==========CONFIGURATION SETTING==================
-		int numConf = 1; //number of configuration
-		int numAct = 5;  //number of collaborator
-		int numDisAct = 0;  //how many to accumulate 
-		int numEnv = 5;  //number of environment variation
-		int numDisEnv = 0;  //how many to accumulate
+		int numConf = 1; //number of configuration / simulation cycle
+		int numAct = 5;  //min number of collaborator
+		int numDisAct = 0;  //how many to accumulate (distance)
+		int maxAct = 5;  //max number of collaborator
+		int numEnv = 5;  //min number of environment variation
+		int numDisEnv = 0;  //how many to accumulate (distance)
+		int maxEnv = 5;  //max number of environment variation
 		int simCycle = 1; //number of simulation cycle
 		int numQyObj = 3; //number of quality objectives
 		boolean assignValue = false; //true-assign values while encoding, false-later stage
 		boolean reSynthesis = true; //true-need pareto computation, false-not needed
 		
 		for(int conf=0; conf < numConf; conf++) {
-			//==========UPDATING CONFIGURATION SETTING==================
-			numAct += numDisAct;
-			//==========PROPERTIES CREATION=====================
-			//set properties
-			Properties pp[] = new Properties[numQyObj];
-			PropertiesGenerator pg = new PropertiesGenerator();
-			
-			//create the empty properties
-			pp[0] = new Properties();
-			pp[1] = new Properties();
-			pp[2] = new Properties();
-			
-			Random rand = new Random();
-			
-			//initialize values for each resource / variation
-			double cost, rel;
-			int time;
-
-			//initialize range value for reliability
-			double minRel=0.8, maxRel=1.0;
-			double rangeRel = maxRel - minRel;
-			
-			cost = rand.nextInt(20) + 80;
-			time = rand.nextInt(200) + 700;
-			rel = rand.nextDouble() * rangeRel + minRel;
-				
-			//specify the parameters
-			pp[0].setProperties(0, "cost", "double", cost, 10, "<");
-			pp[1].setProperties(1, "time", "int", time, 100,"<");
-			pp[2].setProperties(2, "reliability", "double", rel, 0.1, ">");
-			
-			//========PROPERTIES ENCODING=====================
-			pg.setPropPath(propPath); //set the path
-			pg.assignProperties(pp); //assign properties to the properties generator
-			pg.setValuesStatus(assignValue); //true-encode properties with threshold, false-without threshold (later stage)
-			pg.setThresholdParamswithValues();
-			pg.encodeProperties(); //encode the properties specification with values
-			
-			
-			//=========MODEL ENCODING============================		
-			//Create a model generator instance
-			AdaptationModelGenerator mdg = new AdaptationModelGenerator();
-			
-			//configuring model parameters and values
-			System.out.println("Creating model for single application deployment...");
-			mdg.setValuesStatus(assignValue); //true-encode model with values, false-create model without values (later stage)
-			mdg.setPattern(0);	//set the current value of p=0 for single
-			mdg.setParamsNames("p1", "p2", "planner", "environment");
-			mdg.setUpperBounds(1, numAct, numEnv); //simply set numNode = 1
-			
-			
-			//=========INITIALIZE PLANNING-RELATED OBJECTS==============
-			//Create a SG-Planner instance
-			StochasticPlanner sp = new StochasticPlanner();
-			MultiObjStrategyExtraction se = new MultiObjStrategyExtraction();
-			
-			//=========BEGIN SIMULATION=======================
-			//create a simulator
-			SynthesisSimulator syn = new SynthesisSimulator();
-			syn.setPath(propPath, modelPath, transPath, stratPath, actionListPath);
-			syn.setSimulationObjects(pg, mdg, sp, se);
-			
-			if(reSynthesis) {
-				syn.simulatePlanningwithPareto(simCycle);
-				syn.logInformationwithPareto(outfile, cost, time, rel);
-			}
-			else {
-				syn.simulatePlanning(simCycle);
-				syn.logInformation(outfile);
-			}
-			
-			//==========UPDATING CONFIGURATION SETTING FOR THE NEXT CYCLE==================
-			numAct += numDisAct;
-			numEnv += numDisEnv;
-			
-			
+			for (int act=numAct; act <= maxAct; act += numDisAct) {
+				for (int env=numEnv; env <= maxEnv; env += numDisEnv)  {
+					//==========PROPERTIES CREATION=====================
+					//set properties
+					Properties pp[] = new Properties[numQyObj];
+					PropertiesGenerator pg = new PropertiesGenerator();
+					
+					//create the empty properties
+					pp[0] = new Properties();
+					pp[1] = new Properties();
+					pp[2] = new Properties();
+					
+					Random rand = new Random();
+					
+					//initialize values for each resource / variation
+					double cost, rel;
+					int time;
+		
+					//initialize range value for reliability
+					double minRel=0.8, maxRel=1.0;
+					double rangeRel = maxRel - minRel;
+					
+					cost = rand.nextInt(20) + 80;
+					time = rand.nextInt(200) + 700;
+					rel = rand.nextDouble() * rangeRel + minRel;
+						
+					//specify the parameters
+					pp[0].setProperties(0, "cost", "double", cost, 10, "<");
+					pp[1].setProperties(1, "time", "int", time, 100,"<");
+					pp[2].setProperties(2, "reliability", "double", rel, 0.1, ">");
+					
+					//========PROPERTIES ENCODING=====================
+					pg.setPropPath(propPath); //set the path
+					pg.assignProperties(pp); //assign properties to the properties generator
+					pg.setValuesStatus(assignValue); //true-encode properties with threshold, false-without threshold (later stage)
+					pg.setThresholdParamswithValues();
+					pg.encodeProperties(); //encode the properties specification with values
+					
+					
+					//=========MODEL ENCODING============================		
+					//Create a model generator instance
+					AdaptationModelGenerator mdg = new AdaptationModelGenerator();
+					
+					//configuring model parameters and values
+					System.out.println("Creating model for single application deployment...");
+					mdg.setValuesStatus(assignValue); //true-encode model with values, false-create model without values (later stage)
+					mdg.setPattern(0);	//set the current value of p=0 for single
+					mdg.setParamsNames("p1", "p2", "planner", "environment");
+					mdg.setUpperBounds(1, act, env); //simply set numNode = 1
+					
+					
+					//=========INITIALIZE PLANNING-RELATED OBJECTS==============
+					//Create a SG-Planner instance
+					StochasticPlanner sp = new StochasticPlanner();
+					MultiObjStrategyExtraction se = new MultiObjStrategyExtraction();
+					
+					//=========BEGIN SIMULATION=======================
+					//create a simulator
+					SynthesisSimulator syn = new SynthesisSimulator();
+					syn.setPath(propPath, modelPath, transPath, stratPath, actionListPath);
+					syn.setSimulationObjects(pg, mdg, sp, se);
+					
+					if(reSynthesis) {
+						syn.simulatePlanningwithPareto(simCycle);
+						syn.logInformationwithPareto(outfile, cost, time, rel);
+					}
+					else {
+						syn.simulatePlanning(simCycle);
+						syn.logInformation(outfile);
+					}
+						
+				}//end of environment
+			}//end of action
 		}//end of configuration
 		
 	}

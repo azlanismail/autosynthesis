@@ -1,9 +1,9 @@
-0 r0
-1 r0
-2 r0
-3 r0
-4 r0
-5 r0
+0 r4
+1 r4
+2 r4
+3 r4
+4 r4
+5 r4
 6 end
 7 end
 8 end
@@ -11,7 +11,7 @@
 10 end
 11 n0rs0
 12 n1rs3
-13 n2rs4
-14 n3rs3
+13 n2rs2
+14 n3rs2
 15 n4rs1
 
