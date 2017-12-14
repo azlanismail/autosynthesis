@@ -16,6 +16,7 @@ import explicit.SMGModelChecker;
 import explicit.StateModelChecker;
 import parma_polyhedra_library.Polyhedron;
 import parser.Values;
+import parser.ast.Expression;
 import parser.ast.ModulesFile;
 import parser.ast.PropertiesFile;
 import prism.Prism;
@@ -70,6 +71,17 @@ public class StochasticPlanner {
         simEngine = new SimulatorEngine(prismCom, prism);
         prismEx = new PrismExplicit(mainLog, prism.getSettings());
     }
+	
+//	public void parseProperties(String propsPath) {
+//		Expression exp = null;
+//		try {
+//			prism.modelCheck(propertiesFile, exp);
+//		} catch (PrismException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//		//propertiesFile = prism.parsePropertiesFile(null, new File(propsPath));
+//	}
 	
 	public void parseModelandProperties(String modelPath, String propsPath) {
 		 //for parsing model and property file

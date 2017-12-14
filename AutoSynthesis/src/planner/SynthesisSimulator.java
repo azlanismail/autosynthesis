@@ -99,6 +99,8 @@ public class SynthesisSimulator {
 			//synthesis
 			System.out.println("Synthesizing model...");
 			sp.initiatePlanner();
+			//System.out.println("Validate properties only");
+			//sp.parseProperties(propPath);
 			sp.parseModelandProperties(modelPath, propPath);
 			
 			if(!mdg.setValuesStatus)
@@ -178,6 +180,8 @@ public class SynthesisSimulator {
 			
 			System.out.println("Synthesizing model...");
 			sp.initiatePlanner();
+			//System.out.println("Check properties only................");
+			//sp.parseProperties(propPath);
 			sp.parseModelandProperties(modelPath, propPath);
 			sp.setPropertyId(0);
 			
