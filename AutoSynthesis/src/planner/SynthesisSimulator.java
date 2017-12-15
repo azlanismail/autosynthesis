@@ -200,7 +200,7 @@ public class SynthesisSimulator {
 				//record the synthesis status
 				statusSyn[m][count] = status;
 				
-				if ((status==true) || (count > 2)) {
+				if ((status==true) || (count > 1)) {
 					System.out.println("Terminating the model checking loop");
 					break;
 				}
@@ -356,15 +356,15 @@ public class SynthesisSimulator {
 				
 		//==========CONFIGURATION SETTING==================
 		int numConf = 1; //number of configuration / simulation cycle
-		int numAct = 5;  //min number of collaborator
+		int numAct = 1;  //min number of collaborator
 		int numDisAct = 0;  //how many to accumulate (distance)
-		int maxAct = 5;  //max number of collaborator
-		int numEnv = 5;  //min number of environment variation
+		int maxAct = 1;  //max number of collaborator
+		int numEnv = 1;  //min number of environment variation
 		int numDisEnv = 0;  //how many to accumulate (distance)
-		int maxEnv = 5;  //max number of environment variation
-		int simCycle = 1; //number of simulation cycle
+		int maxEnv = 1;  //max number of environment variation
+		//int simCycle = 1; //number of simulation cycle
 		int numQyObj = 3; //number of quality objectives
-		boolean assignValue = false; //true-assign values while encoding, false-later stage
+		boolean assignValue = true; //true-assign values while encoding, false-later stage
 		boolean reSynthesis = true; //true-need pareto computation, false-not needed
 		
 		for(int conf=0; conf < numConf; conf++) {
@@ -431,15 +431,25 @@ public class SynthesisSimulator {
 					syn.setSimulationObjects(pg, mdg, sp, se);
 					
 					if(reSynthesis) {
-						syn.simulatePlanningwithPareto(simCycle);
+						syn.simulatePlanningwithPareto(numConf);
 						syn.logInformationwithPareto(outfile, cost, time, rel);
 					}
 					else {
-						syn.simulatePlanning(simCycle);
+						syn.simulatePlanning(numConf);
 						syn.logInformation(outfile);
 					}
-						
+					
+					//=========HANDLING DISTANCE ISSUE=======================
+					//It happens when distance is set to 0
+					//So, change the value manually to introduce false scenario
+					env++;	
 				}//end of environment
+				
+				//=========HANDLING DISTANCE ISSUE=======================
+				//It happens when distance is set to 0
+				//So, change the value manually to introduce false scenario
+				act++;
+				
 			}//end of action
 		}//end of configuration
 		

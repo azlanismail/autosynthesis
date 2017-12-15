@@ -1,192 +1,24 @@
 smg
 //=========Player definition=======
 player p1
-planner,[r0],[r1],[r2],[r3],[r4],[end]
+planner,[r0],[end]
 endplayer
 
 player p2
-environment,[n0rs0],[n0rs1],[n0rs2],[n0rs3],[n0rs4],[n1rs0],[n1rs1],[n1rs2],[n1rs3],[n1rs4],[n2rs0],[n2rs1],[n2rs2],[n2rs3],[n2rs4],[n3rs0],[n3rs1],[n3rs2],[n3rs3],[n3rs4],[n4rs0],[n4rs1],[n4rs2],[n4rs3],[n4rs4]
+environment,[n0rs0]
 endplayer
 
 //=========Resource Profiles=======
-const int MXN;
-const double app_rs;
+const int MXN=1;
+const double app_rs=0.3025748879439261;
 const double mx_rs=1.0; //set the max resource per slot
 
 const int n0rs0_id = 0;
-const double n0rs0_cost;	//cost
-const double n0rs0_avail; //avail
-const double n0rs0_rel;	//rel
-const int n0rs0_time;	//time
-const double n0rs0_res;	//time
-
-const int n0rs1_id = 0;
-const double n0rs1_cost;	//cost
-const double n0rs1_avail; //avail
-const double n0rs1_rel;	//rel
-const int n0rs1_time;	//time
-const double n0rs1_res;	//time
-
-const int n0rs2_id = 0;
-const double n0rs2_cost;	//cost
-const double n0rs2_avail; //avail
-const double n0rs2_rel;	//rel
-const int n0rs2_time;	//time
-const double n0rs2_res;	//time
-
-const int n0rs3_id = 0;
-const double n0rs3_cost;	//cost
-const double n0rs3_avail; //avail
-const double n0rs3_rel;	//rel
-const int n0rs3_time;	//time
-const double n0rs3_res;	//time
-
-const int n0rs4_id = 0;
-const double n0rs4_cost;	//cost
-const double n0rs4_avail; //avail
-const double n0rs4_rel;	//rel
-const int n0rs4_time;	//time
-const double n0rs4_res;	//time
-
-const int n1rs0_id = 1;
-const double n1rs0_cost;	//cost
-const double n1rs0_avail; //avail
-const double n1rs0_rel;	//rel
-const int n1rs0_time;	//time
-const double n1rs0_res;	//time
-
-const int n1rs1_id = 1;
-const double n1rs1_cost;	//cost
-const double n1rs1_avail; //avail
-const double n1rs1_rel;	//rel
-const int n1rs1_time;	//time
-const double n1rs1_res;	//time
-
-const int n1rs2_id = 1;
-const double n1rs2_cost;	//cost
-const double n1rs2_avail; //avail
-const double n1rs2_rel;	//rel
-const int n1rs2_time;	//time
-const double n1rs2_res;	//time
-
-const int n1rs3_id = 1;
-const double n1rs3_cost;	//cost
-const double n1rs3_avail; //avail
-const double n1rs3_rel;	//rel
-const int n1rs3_time;	//time
-const double n1rs3_res;	//time
-
-const int n1rs4_id = 1;
-const double n1rs4_cost;	//cost
-const double n1rs4_avail; //avail
-const double n1rs4_rel;	//rel
-const int n1rs4_time;	//time
-const double n1rs4_res;	//time
-
-const int n2rs0_id = 2;
-const double n2rs0_cost;	//cost
-const double n2rs0_avail; //avail
-const double n2rs0_rel;	//rel
-const int n2rs0_time;	//time
-const double n2rs0_res;	//time
-
-const int n2rs1_id = 2;
-const double n2rs1_cost;	//cost
-const double n2rs1_avail; //avail
-const double n2rs1_rel;	//rel
-const int n2rs1_time;	//time
-const double n2rs1_res;	//time
-
-const int n2rs2_id = 2;
-const double n2rs2_cost;	//cost
-const double n2rs2_avail; //avail
-const double n2rs2_rel;	//rel
-const int n2rs2_time;	//time
-const double n2rs2_res;	//time
-
-const int n2rs3_id = 2;
-const double n2rs3_cost;	//cost
-const double n2rs3_avail; //avail
-const double n2rs3_rel;	//rel
-const int n2rs3_time;	//time
-const double n2rs3_res;	//time
-
-const int n2rs4_id = 2;
-const double n2rs4_cost;	//cost
-const double n2rs4_avail; //avail
-const double n2rs4_rel;	//rel
-const int n2rs4_time;	//time
-const double n2rs4_res;	//time
-
-const int n3rs0_id = 3;
-const double n3rs0_cost;	//cost
-const double n3rs0_avail; //avail
-const double n3rs0_rel;	//rel
-const int n3rs0_time;	//time
-const double n3rs0_res;	//time
-
-const int n3rs1_id = 3;
-const double n3rs1_cost;	//cost
-const double n3rs1_avail; //avail
-const double n3rs1_rel;	//rel
-const int n3rs1_time;	//time
-const double n3rs1_res;	//time
-
-const int n3rs2_id = 3;
-const double n3rs2_cost;	//cost
-const double n3rs2_avail; //avail
-const double n3rs2_rel;	//rel
-const int n3rs2_time;	//time
-const double n3rs2_res;	//time
-
-const int n3rs3_id = 3;
-const double n3rs3_cost;	//cost
-const double n3rs3_avail; //avail
-const double n3rs3_rel;	//rel
-const int n3rs3_time;	//time
-const double n3rs3_res;	//time
-
-const int n3rs4_id = 3;
-const double n3rs4_cost;	//cost
-const double n3rs4_avail; //avail
-const double n3rs4_rel;	//rel
-const int n3rs4_time;	//time
-const double n3rs4_res;	//time
-
-const int n4rs0_id = 4;
-const double n4rs0_cost;	//cost
-const double n4rs0_avail; //avail
-const double n4rs0_rel;	//rel
-const int n4rs0_time;	//time
-const double n4rs0_res;	//time
-
-const int n4rs1_id = 4;
-const double n4rs1_cost;	//cost
-const double n4rs1_avail; //avail
-const double n4rs1_rel;	//rel
-const int n4rs1_time;	//time
-const double n4rs1_res;	//time
-
-const int n4rs2_id = 4;
-const double n4rs2_cost;	//cost
-const double n4rs2_avail; //avail
-const double n4rs2_rel;	//rel
-const int n4rs2_time;	//time
-const double n4rs2_res;	//time
-
-const int n4rs3_id = 4;
-const double n4rs3_cost;	//cost
-const double n4rs3_avail; //avail
-const double n4rs3_rel;	//rel
-const int n4rs3_time;	//time
-const double n4rs3_res;	//time
-
-const int n4rs4_id = 4;
-const double n4rs4_cost;	//cost
-const double n4rs4_avail; //avail
-const double n4rs4_rel;	//rel
-const int n4rs4_time;	//time
-const double n4rs4_res;	//time
+const double n0rs0_cost = 72.0;	//cost
+const double n0rs0_avail = 0.890437539051323;	//avail
+const double n0rs0_rel = 0.9441601380043628;		//rel
+const int n0rs0_time = 899;		//time
+const double n0rs0_res = 0.12015930532912625;		//time
 
 
 //=========Global Parameters=======
@@ -200,155 +32,27 @@ module planner
 [end] (t=0) & (goal=true) -> true; //to end the selection
 //P1 moves :
 [r0] (t=0) & (goal=false) -> (n'=0) & (t'=1);
-[r1] (t=0) & (goal=false) -> (n'=1) & (t'=1);
-[r2] (t=0) & (goal=false) -> (n'=2) & (t'=1);
-[r3] (t=0) & (goal=false) -> (n'=3) & (t'=1);
-[r4] (t=0) & (goal=false) -> (n'=4) & (t'=1);
 endmodule
 
 //=========Module for Player 2=======
 module environment
 //P2 moves for single or sequential pattern:
 [n0rs0] (t=1) & (n=0) & (app_rs + n0rs0_res <= mx_rs) -> n0rs0_rel:(goal'=true) & (t'=0) + 1-n0rs0_rel:(goal'=false) & (t'=0);
-[n0rs1] (t=1) & (n=0) & (app_rs + n0rs1_res <= mx_rs) -> n0rs1_rel:(goal'=true) & (t'=0) + 1-n0rs1_rel:(goal'=false) & (t'=0);
-[n0rs2] (t=1) & (n=0) & (app_rs + n0rs2_res <= mx_rs) -> n0rs2_rel:(goal'=true) & (t'=0) + 1-n0rs2_rel:(goal'=false) & (t'=0);
-[n0rs3] (t=1) & (n=0) & (app_rs + n0rs3_res <= mx_rs) -> n0rs3_rel:(goal'=true) & (t'=0) + 1-n0rs3_rel:(goal'=false) & (t'=0);
-[n0rs4] (t=1) & (n=0) & (app_rs + n0rs4_res <= mx_rs) -> n0rs4_rel:(goal'=true) & (t'=0) + 1-n0rs4_rel:(goal'=false) & (t'=0);
-
-[n1rs0] (t=1) & (n=1) & (app_rs + n1rs0_res <= mx_rs) -> n1rs0_rel:(goal'=true) & (t'=0) + 1-n1rs0_rel:(goal'=false) & (t'=0);
-[n1rs1] (t=1) & (n=1) & (app_rs + n1rs1_res <= mx_rs) -> n1rs1_rel:(goal'=true) & (t'=0) + 1-n1rs1_rel:(goal'=false) & (t'=0);
-[n1rs2] (t=1) & (n=1) & (app_rs + n1rs2_res <= mx_rs) -> n1rs2_rel:(goal'=true) & (t'=0) + 1-n1rs2_rel:(goal'=false) & (t'=0);
-[n1rs3] (t=1) & (n=1) & (app_rs + n1rs3_res <= mx_rs) -> n1rs3_rel:(goal'=true) & (t'=0) + 1-n1rs3_rel:(goal'=false) & (t'=0);
-[n1rs4] (t=1) & (n=1) & (app_rs + n1rs4_res <= mx_rs) -> n1rs4_rel:(goal'=true) & (t'=0) + 1-n1rs4_rel:(goal'=false) & (t'=0);
-
-[n2rs0] (t=1) & (n=2) & (app_rs + n2rs0_res <= mx_rs) -> n2rs0_rel:(goal'=true) & (t'=0) + 1-n2rs0_rel:(goal'=false) & (t'=0);
-[n2rs1] (t=1) & (n=2) & (app_rs + n2rs1_res <= mx_rs) -> n2rs1_rel:(goal'=true) & (t'=0) + 1-n2rs1_rel:(goal'=false) & (t'=0);
-[n2rs2] (t=1) & (n=2) & (app_rs + n2rs2_res <= mx_rs) -> n2rs2_rel:(goal'=true) & (t'=0) + 1-n2rs2_rel:(goal'=false) & (t'=0);
-[n2rs3] (t=1) & (n=2) & (app_rs + n2rs3_res <= mx_rs) -> n2rs3_rel:(goal'=true) & (t'=0) + 1-n2rs3_rel:(goal'=false) & (t'=0);
-[n2rs4] (t=1) & (n=2) & (app_rs + n2rs4_res <= mx_rs) -> n2rs4_rel:(goal'=true) & (t'=0) + 1-n2rs4_rel:(goal'=false) & (t'=0);
-
-[n3rs0] (t=1) & (n=3) & (app_rs + n3rs0_res <= mx_rs) -> n3rs0_rel:(goal'=true) & (t'=0) + 1-n3rs0_rel:(goal'=false) & (t'=0);
-[n3rs1] (t=1) & (n=3) & (app_rs + n3rs1_res <= mx_rs) -> n3rs1_rel:(goal'=true) & (t'=0) + 1-n3rs1_rel:(goal'=false) & (t'=0);
-[n3rs2] (t=1) & (n=3) & (app_rs + n3rs2_res <= mx_rs) -> n3rs2_rel:(goal'=true) & (t'=0) + 1-n3rs2_rel:(goal'=false) & (t'=0);
-[n3rs3] (t=1) & (n=3) & (app_rs + n3rs3_res <= mx_rs) -> n3rs3_rel:(goal'=true) & (t'=0) + 1-n3rs3_rel:(goal'=false) & (t'=0);
-[n3rs4] (t=1) & (n=3) & (app_rs + n3rs4_res <= mx_rs) -> n3rs4_rel:(goal'=true) & (t'=0) + 1-n3rs4_rel:(goal'=false) & (t'=0);
-
-[n4rs0] (t=1) & (n=4) & (app_rs + n4rs0_res <= mx_rs) -> n4rs0_rel:(goal'=true) & (t'=0) + 1-n4rs0_rel:(goal'=false) & (t'=0);
-[n4rs1] (t=1) & (n=4) & (app_rs + n4rs1_res <= mx_rs) -> n4rs1_rel:(goal'=true) & (t'=0) + 1-n4rs1_rel:(goal'=false) & (t'=0);
-[n4rs2] (t=1) & (n=4) & (app_rs + n4rs2_res <= mx_rs) -> n4rs2_rel:(goal'=true) & (t'=0) + 1-n4rs2_rel:(goal'=false) & (t'=0);
-[n4rs3] (t=1) & (n=4) & (app_rs + n4rs3_res <= mx_rs) -> n4rs3_rel:(goal'=true) & (t'=0) + 1-n4rs3_rel:(goal'=false) & (t'=0);
-[n4rs4] (t=1) & (n=4) & (app_rs + n4rs4_res <= mx_rs) -> n4rs4_rel:(goal'=true) & (t'=0) + 1-n4rs4_rel:(goal'=false) & (t'=0);
 
 endmodule
 
 //=========Reward Structure=======
 rewards "rw_cost"
 [n0rs0] true : n0rs0_cost;
-[n0rs1] true : n0rs1_cost;
-[n0rs2] true : n0rs2_cost;
-[n0rs3] true : n0rs3_cost;
-[n0rs4] true : n0rs4_cost;
-[n1rs0] true : n1rs0_cost;
-[n1rs1] true : n1rs1_cost;
-[n1rs2] true : n1rs2_cost;
-[n1rs3] true : n1rs3_cost;
-[n1rs4] true : n1rs4_cost;
-[n2rs0] true : n2rs0_cost;
-[n2rs1] true : n2rs1_cost;
-[n2rs2] true : n2rs2_cost;
-[n2rs3] true : n2rs3_cost;
-[n2rs4] true : n2rs4_cost;
-[n3rs0] true : n3rs0_cost;
-[n3rs1] true : n3rs1_cost;
-[n3rs2] true : n3rs2_cost;
-[n3rs3] true : n3rs3_cost;
-[n3rs4] true : n3rs4_cost;
-[n4rs0] true : n4rs0_cost;
-[n4rs1] true : n4rs1_cost;
-[n4rs2] true : n4rs2_cost;
-[n4rs3] true : n4rs3_cost;
-[n4rs4] true : n4rs4_cost;
 endrewards
 rewards "rw_time"
 [n0rs0] true : n0rs0_time;
-[n0rs1] true : n0rs1_time;
-[n0rs2] true : n0rs2_time;
-[n0rs3] true : n0rs3_time;
-[n0rs4] true : n0rs4_time;
-[n1rs0] true : n1rs0_time;
-[n1rs1] true : n1rs1_time;
-[n1rs2] true : n1rs2_time;
-[n1rs3] true : n1rs3_time;
-[n1rs4] true : n1rs4_time;
-[n2rs0] true : n2rs0_time;
-[n2rs1] true : n2rs1_time;
-[n2rs2] true : n2rs2_time;
-[n2rs3] true : n2rs3_time;
-[n2rs4] true : n2rs4_time;
-[n3rs0] true : n3rs0_time;
-[n3rs1] true : n3rs1_time;
-[n3rs2] true : n3rs2_time;
-[n3rs3] true : n3rs3_time;
-[n3rs4] true : n3rs4_time;
-[n4rs0] true : n4rs0_time;
-[n4rs1] true : n4rs1_time;
-[n4rs2] true : n4rs2_time;
-[n4rs3] true : n4rs3_time;
-[n4rs4] true : n4rs4_time;
 endrewards
 rewards "rw_reliability"
 [n0rs0] true : n0rs0_rel;
-[n0rs1] true : n0rs1_rel;
-[n0rs2] true : n0rs2_rel;
-[n0rs3] true : n0rs3_rel;
-[n0rs4] true : n0rs4_rel;
-[n1rs0] true : n1rs0_rel;
-[n1rs1] true : n1rs1_rel;
-[n1rs2] true : n1rs2_rel;
-[n1rs3] true : n1rs3_rel;
-[n1rs4] true : n1rs4_rel;
-[n2rs0] true : n2rs0_rel;
-[n2rs1] true : n2rs1_rel;
-[n2rs2] true : n2rs2_rel;
-[n2rs3] true : n2rs3_rel;
-[n2rs4] true : n2rs4_rel;
-[n3rs0] true : n3rs0_rel;
-[n3rs1] true : n3rs1_rel;
-[n3rs2] true : n3rs2_rel;
-[n3rs3] true : n3rs3_rel;
-[n3rs4] true : n3rs4_rel;
-[n4rs0] true : n4rs0_rel;
-[n4rs1] true : n4rs1_rel;
-[n4rs2] true : n4rs2_rel;
-[n4rs3] true : n4rs3_rel;
-[n4rs4] true : n4rs4_rel;
 endrewards
 rewards "rw_availability"
 [n0rs0] true : n0rs0_avail;
-[n0rs1] true : n0rs1_avail;
-[n0rs2] true : n0rs2_avail;
-[n0rs3] true : n0rs3_avail;
-[n0rs4] true : n0rs4_avail;
-[n1rs0] true : n1rs0_avail;
-[n1rs1] true : n1rs1_avail;
-[n1rs2] true : n1rs2_avail;
-[n1rs3] true : n1rs3_avail;
-[n1rs4] true : n1rs4_avail;
-[n2rs0] true : n2rs0_avail;
-[n2rs1] true : n2rs1_avail;
-[n2rs2] true : n2rs2_avail;
-[n2rs3] true : n2rs3_avail;
-[n2rs4] true : n2rs4_avail;
-[n3rs0] true : n3rs0_avail;
-[n3rs1] true : n3rs1_avail;
-[n3rs2] true : n3rs2_avail;
-[n3rs3] true : n3rs3_avail;
-[n3rs4] true : n3rs4_avail;
-[n4rs0] true : n4rs0_avail;
-[n4rs1] true : n4rs1_avail;
-[n4rs2] true : n4rs2_avail;
-[n4rs3] true : n4rs3_avail;
-[n4rs4] true : n4rs4_avail;
 endrewards
 //=========Labels=======
 label "done" = (goal=true);
