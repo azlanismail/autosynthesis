@@ -2,10 +2,10 @@
 Building model...
 
 Computing reachable states... 4 states
-Reachable states exploration and model construction done in 0.16 secs.
+Reachable states exploration and model construction done in 0.159 secs.
 Sorting reachable states list...
 
-Time for model construction: 0.167 seconds.
+Time for model construction: 0.166 seconds.
 
 Reducing multi-objective query to CNF: R{"rw_cost"}<cost [ C ]&R{"rw_time"}<time [ C ]&R{"rw_reliability"}>reliability [ C ]
 expr: [[R{"rw_cost"}<cost [ C ]], [R{"rw_time"}<time [ C ]], [R{"rw_reliability"}>reliability [ C ]]]
@@ -21,14 +21,14 @@ Property:
 
 initial state: 0
 operation: Strategy generation
-Synthesis took 0.089795 s
+Synthesis took 0.127091 s
 strategy: null
 
 Number of states satisfying <<p1>> ((R{"rw_cost"}<cost [ C ]&R{"rw_time"}<time [ C ]&R{"rw_reliability"}>reliability [ C ])): 0
 
 Property satisfied in 0 of 1 initial states.
 
-Time for model checking: 0.16 seconds.
+Time for model checking: 0.199 seconds.
 
 Result: false (property not satisfied in the initial state)
 
@@ -46,10 +46,67 @@ Property:
 
 initial state: 0
 operation: Pareto set computation
-Pareto set computation took 0.032679 s
+Pareto set computation took 0.021150 s
 Resulting Pareto set:
 maxcorners=4. state 0:
-[r:[0.0000, 0.0000, -1.0000]r:[0.0000, 1.0000, 0.0000]r:[1.0000, 0.0000, 0.0000][76.2683, 952.1790, 0.9898]]
+[r:[0.0000, 0.0000, -1.0000]r:[0.0000, 1.0000, 0.0000]r:[1.0000, 0.0000, 0.0000][84.8221, 925.2333, 0.9892]]
+
+Pareto set computation result evaluated
+Time for model checking: 0.032 seconds.
+
+Result: Pareto Set
+
+Building model...
+
+Computing reachable states... 4 states
+Reachable states exploration and model construction done in 0.08600000000000001 secs.
+Sorting reachable states list...
+
+Time for model construction: 0.08600000000000001 seconds.
+
+Reducing multi-objective query to CNF: R{"rw_cost"}<cost [ C ]&R{"rw_time"}<time [ C ]&R{"rw_reliability"}>reliability [ C ]
+expr: [[R{"rw_cost"}<cost [ C ]], [R{"rw_time"}<time [ C ]], [R{"rw_reliability"}>reliability [ C ]]]
+
+Warning: Strict inequalities ignored and turned into nonstrict inequalities:
+	R{"rw_cost"}<cost [ C ]
+	R{"rw_time"}<time [ C ]
+	R{"rw_reliability"}>reliability [ C ]
+
+/////////////////   NEW (DIRECT) MODEL CHECKING TASK     /////////////////////
+Property:
+	[[R{"rw_cost"}<cost [ C ]], [R{"rw_time"}<time [ C ]], [R{"rw_reliability"}>reliability [ C ]]]
+
+initial state: 0
+operation: Strategy generation
+Synthesis took 0.043376 s
+strategy: null
+
+Number of states satisfying <<p1>> ((R{"rw_cost"}<cost [ C ]&R{"rw_time"}<time [ C ]&R{"rw_reliability"}>reliability [ C ])): 0
+
+Property satisfied in 0 of 1 initial states.
+
+Time for model checking: 0.048 seconds.
+
+Result: false (property not satisfied in the initial state)
+
+Reducing multi-objective query to CNF: R{"rw_cost"}<cost [ C ]&R{"rw_time"}<time [ C ]&R{"rw_reliability"}>reliability [ C ]
+expr: [[R{"rw_cost"}<cost [ C ]], [R{"rw_time"}<time [ C ]], [R{"rw_reliability"}>reliability [ C ]]]
+
+Warning: Strict inequalities ignored and turned into nonstrict inequalities:
+	R{"rw_cost"}<cost [ C ]
+	R{"rw_time"}<time [ C ]
+	R{"rw_reliability"}>reliability [ C ]
+
+/////////////////   NEW (DIRECT) MODEL CHECKING TASK     /////////////////////
+Property:
+	[[R{"rw_cost"}<cost [ C ]], [R{"rw_time"}<time [ C ]], [R{"rw_reliability"}>reliability [ C ]]]
+
+initial state: 0
+operation: Pareto set computation
+Pareto set computation took 0.038677 s
+Resulting Pareto set:
+maxcorners=4. state 0:
+[r:[0.0000, 0.0000, -1.0000]r:[0.0000, 1.0000, 0.0000]r:[1.0000, 0.0000, 0.0000][84.8221, 925.2333, 0.9892]]
 
 Pareto set computation result evaluated
 Time for model checking: 0.049 seconds.
@@ -59,10 +116,10 @@ Result: Pareto Set
 Building model...
 
 Computing reachable states... 4 states
-Reachable states exploration and model construction done in 0.10700000000000001 secs.
+Reachable states exploration and model construction done in 0.11 secs.
 Sorting reachable states list...
 
-Time for model construction: 0.10700000000000001 seconds.
+Time for model construction: 0.111 seconds.
 
 Reducing multi-objective query to CNF: R{"rw_cost"}<cost [ C ]&R{"rw_time"}<time [ C ]&R{"rw_reliability"}>reliability [ C ]
 expr: [[R{"rw_cost"}<cost [ C ]], [R{"rw_time"}<time [ C ]], [R{"rw_reliability"}>reliability [ C ]]]
@@ -78,70 +135,13 @@ Property:
 
 initial state: 0
 operation: Strategy generation
-Synthesis took 0.043353 s
+Synthesis took 0.041565 s
 strategy: null
 
 Number of states satisfying <<p1>> ((R{"rw_cost"}<cost [ C ]&R{"rw_time"}<time [ C ]&R{"rw_reliability"}>reliability [ C ])): 0
 
 Property satisfied in 0 of 1 initial states.
 
-Time for model checking: 0.047 seconds.
-
-Result: false (property not satisfied in the initial state)
-
-Reducing multi-objective query to CNF: R{"rw_cost"}<cost [ C ]&R{"rw_time"}<time [ C ]&R{"rw_reliability"}>reliability [ C ]
-expr: [[R{"rw_cost"}<cost [ C ]], [R{"rw_time"}<time [ C ]], [R{"rw_reliability"}>reliability [ C ]]]
-
-Warning: Strict inequalities ignored and turned into nonstrict inequalities:
-	R{"rw_cost"}<cost [ C ]
-	R{"rw_time"}<time [ C ]
-	R{"rw_reliability"}>reliability [ C ]
-
-/////////////////   NEW (DIRECT) MODEL CHECKING TASK     /////////////////////
-Property:
-	[[R{"rw_cost"}<cost [ C ]], [R{"rw_time"}<time [ C ]], [R{"rw_reliability"}>reliability [ C ]]]
-
-initial state: 0
-operation: Pareto set computation
-Pareto set computation took 0.039352 s
-Resulting Pareto set:
-maxcorners=4. state 0:
-[r:[0.0000, 0.0000, -1.0000]r:[0.0000, 1.0000, 0.0000]r:[1.0000, 0.0000, 0.0000][76.2683, 952.1790, 0.9898]]
-
-Pareto set computation result evaluated
-Time for model checking: 0.057 seconds.
-
-Result: Pareto Set
-
-Building model...
-
-Computing reachable states... 4 states
-Reachable states exploration and model construction done in 0.112 secs.
-Sorting reachable states list...
-
-Time for model construction: 0.112 seconds.
-
-Reducing multi-objective query to CNF: R{"rw_cost"}<cost [ C ]&R{"rw_time"}<time [ C ]&R{"rw_reliability"}>reliability [ C ]
-expr: [[R{"rw_cost"}<cost [ C ]], [R{"rw_time"}<time [ C ]], [R{"rw_reliability"}>reliability [ C ]]]
-
-Warning: Strict inequalities ignored and turned into nonstrict inequalities:
-	R{"rw_cost"}<cost [ C ]
-	R{"rw_time"}<time [ C ]
-	R{"rw_reliability"}>reliability [ C ]
-
-/////////////////   NEW (DIRECT) MODEL CHECKING TASK     /////////////////////
-Property:
-	[[R{"rw_cost"}<cost [ C ]], [R{"rw_time"}<time [ C ]], [R{"rw_reliability"}>reliability [ C ]]]
-
-initial state: 0
-operation: Strategy generation
-Synthesis took 0.044621 s
-strategy: null
-
-Number of states satisfying <<p1>> ((R{"rw_cost"}<cost [ C ]&R{"rw_time"}<time [ C ]&R{"rw_reliability"}>reliability [ C ])): 0
-
-Property satisfied in 0 of 1 initial states.
-
-Time for model checking: 0.048 seconds.
+Time for model checking: 0.046000000000000006 seconds.
 
 Result: false (property not satisfied in the initial state)

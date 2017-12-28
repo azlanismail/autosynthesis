@@ -1,4 +1,4 @@
-const double cost = 82.0;
-const int time = 701;
-const double reliability = 0.8300464307011126;
+const double cost = 80.0;
+const int time = 816;
+const double reliability = 0.931189557170456;
 <<p1>> (R{"rw_cost"}< cost[C] & R{"rw_time"}< time[C] & R{"rw_reliability"}> reliability[C] )

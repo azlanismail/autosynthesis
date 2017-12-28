@@ -10,15 +10,15 @@ endplayer
 
 //=========Resource Profiles=======
 const int MXN=1;
-const double app_rs=0.3025748879439261;
+const double app_rs=0.1261966194701128;
 const double mx_rs=1.0; //set the max resource per slot
 
 const int n0rs0_id = 0;
-const double n0rs0_cost = 72.0;	//cost
-const double n0rs0_avail = 0.890437539051323;	//avail
-const double n0rs0_rel = 0.9441601380043628;		//rel
-const int n0rs0_time = 899;		//time
-const double n0rs0_res = 0.12015930532912625;		//time
+const double n0rs0_cost = 77.0;	//cost
+const double n0rs0_avail = 0.8492755760259022;	//avail
+const double n0rs0_rel = 0.9078889041137507;		//rel
+const int n0rs0_time = 840;		//time
+const double n0rs0_res = 0.3908490269249353;		//time
 
 
 //=========Global Parameters=======
