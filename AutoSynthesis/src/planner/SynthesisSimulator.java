@@ -451,7 +451,6 @@ public class SynthesisSimulator {
 			}//end of action
 		}//end of configuration
 		
-	}//end of main
 	}
 	
 	public static void main(String[] args) {
